@@ -1,14 +1,14 @@
 <?php
-$classe = [
-    [
-        'nom' => 'Doe',
-        'prenom' => 'Jean',
-        'notes' => [16, 17, 18]
-    ],
-    [
-        'nom' => 'mari',
-        'prenom' => 'renard',
-        'notes' => [6, 3, 5]
-    ]
+$note = [10, 15, 20,30];
+$eleves = [
+    'cm2' => ['Jean','Marc','Jane', 'Marion'],
+    'cm1' => ['Emilie', 'Marcelin']
 ];
-print_r($classe[1]["notes"]);
+
+foreach ($eleves as $key => $value) {
+    echo 'La classe ' . $key . ": \n" ;
+   foreach ($value as $key ) {
+      echo '- ' .$key . "\n";
+   }
+   echo "\n";
+}
