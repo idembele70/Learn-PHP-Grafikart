@@ -1,20 +1,27 @@
 <?php
+$creneaux = [];
 
-$tabCreneaux = [];
 while (true) {
-    $debut = (int)readline("Heure d'ouverture : ");
-    $fin = (int)readline("Heure de fermeture : ");
-    if ($debut < $fin && $debut !== 0 && $fin !== 0){
-        array_push($tabCreneaux, $debut, $fin);
-        $newCreneaux =  readline("Voulez vous saisir un nouveau crée ? o/n : ");
-        if ($newCreneaux !== 'o'){
-            foreach ($tabCreneaux as $key => $value){
-                if ($key % 2 === 0){ 
-                    echo "L'heure d'ouverture est $value. L'heure de fermeture est : " . $tabCreneaux[$key+1] . "\n";
-                }
-            }
-            return;
+    $debut = (int)readline('Heure d\'ouverture : ');
+    $fin = (int)readline('Heure de fermuture : ');
+    if ($debut >= $fin) {
+        echo 'Le créneaux ne peut pas etre enregistré car l\'heure dé' . $debut .'est supérieur à l\'heure de fermeture' . "\n";
+    } else {
+        $creneaux[] = [$debut, $fin];
+        $action = readline('Voulez vous enregistrer un nouveau créneau (o/n) : ');
+        if($action === 'n') {
+            break;
         }
     }
 }
-?>
+$heure = (int)readline("A quelle heure voulez vous visitez le magasin ?");
+$creneauTrouver = false;
+
+    foreach ($creneaux as $creneau) {
+            if ($heure > $creneau[0] && $heure < $creneau[1])$creneauTrouver = true; break;         
+        }
+if ($creneauTrouver) {
+    echo 'Le magasin sera ouvert'. "\n";
+} else {
+    echo 'Désolé, le magasin sera fermé:(' . "\n";
+}
