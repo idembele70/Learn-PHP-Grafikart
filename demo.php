@@ -14,14 +14,12 @@ while (true) {
         }
     }
 }
-$heure = (int)readline("A quelle heure voulez vous visitez le magasin ?");
-$creneauTrouver = false;
 
-    foreach ($creneaux as $creneau) {
-            if ($heure > $creneau[0] && $heure < $creneau[1])$creneauTrouver = true; break;         
-        }
-if ($creneauTrouver) {
-    echo 'Le magasin sera ouvert'. "\n";
-} else {
-    echo 'Désolé, le magasin sera fermé:(' . "\n";
+echo 'Le magasin est ouvert de';
+foreach ($creneaux as $k => $creneau) {
+    // echo $creneau[0] . 'h à' . $creneau[1] . 'h \n'; 
+    if ($k > 0) {
+        echo ' et de ';
+    }
+    echo " {$creneau[0]}h à {$creneau[1]}h";
 }
