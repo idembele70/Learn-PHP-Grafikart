@@ -1,4 +1,9 @@
 <?php
-$notes = [10, 20, 13];
 
-echo round(array_sum($notes) / count($notes),1);
+function bonjour($nom="Ibrahim") {
+    return 'Bonjour ' . $nom . "\n";
+}
+
+$salutation =  bonjour();
+
+echo $salutation;
