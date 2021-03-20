@@ -1,9 +1,10 @@
 <?php
-
-function bonjour($nom="Ibrahim") {
-    return 'Bonjour ' . $nom . "\n";
+function repondre_oui_non($phrase)
+{
+    while (true) {
+        $reponse = readline("Ecrivez oui ou non : ");
+        return $reponse === 'oui' ? "true" : "false";
+    }
 }
 
-$salutation =  bonjour();
-
-echo $salutation;
+echo repondre_oui_non("no");
