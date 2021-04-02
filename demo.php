@@ -1,10 +1,41 @@
 <?php
-function repondre_oui_non($phrase)
+function demander_oui_non()
 {
-    while (true) {
-        $reponse = readline("Ecrivez oui ou non : ");
-        return $reponse === 'oui' ? "true" : "false";
+    $reponse = readline('Voulez vous continuer oui ou non ?');
+    if ($reponse === 'oui'){
+        return $reponse;
+    } else {
+        return 'non';
     }
 }
 
-echo repondre_oui_non("no");
+function demander_creneau($phrase = "Vos creneaux !"): array
+{
+    echo $phrase . "\n";
+    $heureOuverture = null;
+    $heureFermeture = null;
+    while (true) {
+        $heureOuverture = (int)readline("Veuillez saisir l'heure d'ouverture : ");
+        if (0 <= $heureOuverture && $heureOuverture <= 23) break;
+    }
+    while (true) {
+        $heureFermeture = (int)readline("Veuillez saisir l'heure de fermeture : ");
+        if ($heureFermeture > $heureOuverture && $heureFermeture <= 23) break;
+    }
+    return [$heureOuverture, $heureFermeture];
+}
+
+function saisir_creneaux($phrase = 'Ton creneaux bg  !')
+{
+    $creneaux = [];
+    while (true) {
+        $creneaux[] =  demander_creneau($phrase);
+        $choix = demander_oui_non();
+        if ($choix === "non") break;
+    }
+    return $creneaux;
+}
+
+$un = saisir_creneaux();
+
+var_dump($un);
